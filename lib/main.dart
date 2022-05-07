@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    void Randomise(){
+    void randomise(){
       setState(() {
         left=Random().nextInt(6)+1;
         right=Random().nextInt(6)+1;
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
               Expanded(
                 child: TextButton(
                   onPressed: (){
-                    Randomise();
+                    randomise();
                   },
                   child: Image.asset('./images/dice$left.png')
                 ),
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
               Expanded(
                 child: TextButton(
                   onPressed: (){
-                    Randomise();
+                    randomise();
                   },
                   child: Image.asset('images/dice$right.png'),
                 ),
