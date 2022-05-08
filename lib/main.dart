@@ -15,8 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int left =1;
   int right =1;
-  String link='';
-
+  int total=2;
   @override
   Widget build(BuildContext context) {
 
@@ -24,6 +23,7 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         left=Random().nextInt(6)+1;
         right=Random().nextInt(6)+1;
+        total=left+right;
       });
 
     }
@@ -36,29 +36,58 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: Colors.red,
           ),
           backgroundColor: Colors.red,
-          body: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: TextButton(
-                  onPressed: (){
-                    randomise();
-                  },
-                  child: Image.asset('./images/dice$left.png')
+          body: TextButton(
+            onPressed: (){
+              randomise();
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Click anywhere on the screen to roll die',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: (){
-                    randomise();
-                  },
-                  child: Image.asset('images/dice$right.png'),
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset('./images/dice$left.png'),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset('images/dice$right.png'),
+                      ),
+                    ),
+
+
+                  ],
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Text(
+                    '$total',
+                    style: const TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                  )
+                )
+              ],
+            ),
           ),
+          
+
         ),
     );
   }
